@@ -7,3 +7,4 @@
 [submodule "sancus-core"]
 	path = sancus-core
 	url = https://github.com/Michielvb/sancus-core
+	branch = availability
