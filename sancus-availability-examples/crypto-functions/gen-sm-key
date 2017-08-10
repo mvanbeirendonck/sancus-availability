@@ -1,0 +1,17 @@
+#!/bin/bash
+# gen-sm-key
+# VENDOR_KEY is the output of gen-vendor-key
+
+VENDOR_KEY=434be207f99ba4d9 
+SM=foo
+FILENAME=enable
+
+
+
+sancus-cc -g -Wall -c -o $FILENAME.o $FILENAME.c
+sancus-ld --standalone -o no-macs-$FILENAME.elf $FILENAME.o
+sancus-crypto --key $VENDOR_KEY --fill-macs -o $FILENAME.elf no-macs-$FILENAME.elf
+sancus-crypto --gen-sm-key $SM --key $VENDOR_KEY $FILENAME.elf
+
+
+

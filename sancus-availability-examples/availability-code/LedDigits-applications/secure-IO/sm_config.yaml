@@ -1,0 +1,9 @@
+led_driver:
+    secret_start: 0x0090
+    secret_end: 0x0097
+    callerID: 1
+
+timerA_driver:
+    secret_start: 0x012E
+    secret_end: 0x0176
+    callerID: 1

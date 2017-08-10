@@ -1,0 +1,14 @@
+#!/bin/bash
+# simulate the sensor-reader-app
+
+VENDOR_KEY=4078d505d82099ba
+ROM=32K
+RAM=24K
+
+sancus-cc -c sensor.c -o sensor.o
+sancus-cc -c reader.c -o reader.o
+sancus-cc -c main.c -o main.o
+
+sancus-ld --standalone --rom-size $ROM --ram-size $RAM -o main-no-mac.elf main.o reader.o sensor.o
+sancus-crypto --key $VENDOR_KEY --fill-macs -o main.elf main-no-mac.elf
+sancus-sim --rom-size $ROM --ram-size $RAM main.elf

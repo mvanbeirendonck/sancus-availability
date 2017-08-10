@@ -1,0 +1,13 @@
+
+This project aims to examine the current interruptability of SM's.
+This small text document discusses my findings.
+
+1. SM's are currently interruptible. A memory violation is registered when they
+get interrupted and the main loop is run again from the start.
+--> Availability is not guaranteed
+
+2. A violation is not registered when SM's are calling unprotected subroutines:
+for example if a SM is constantly printing something using printf, an interrupt
+during printf will not register a violation
+--> Uninterruptible SM's should not call ANY untrusted code or a solution for this
+needs to be found.

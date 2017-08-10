@@ -1,0 +1,8 @@
+#!/bin/bash
+# gen-vendor-key
+
+
+NODE_KEY=4078d505d82099ba
+ID=1234
+
+sancus-crypto --gen-vendor-key $ID --key $NODE_KEY

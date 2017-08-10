@@ -1,0 +1,44 @@
+[*]
+[*] GTKWave Analyzer v3.3.80 (w)1999-2017 BSI
+[*] Thu May 11 00:02:44 2017
+[*]
+[dumpfile] "/home/michiel/Documents/Sancus/HonoursProgram/Availability/SM-violation/sancus_sim.fst"
+[dumpfile_mtime] "Thu May 11 00:02:31 2017"
+[dumpfile_size] 5545762
+[savefile] "/home/michiel/Documents/Sancus/HonoursProgram/Availability/SM-violation/waveform_view.gtkw"
+[timestart] 1762174000
+[size] 1855 1006
+[pos] -1 -1
+*-20.000000 1764381000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] sancus_sim.
+[treeopen] sancus_sim.dut.
+[treeopen] sancus_sim.dut.execution_unit_0.
+[treeopen] sancus_sim.dut.execution_unit_0.spm_control_0.
+[sst_width] 600
+[signals_width] 241
+[sst_expanded] 1
+[sst_vpaned_height] 298
+@28
+sancus_sim.dut.mclk
+@820
+sancus_sim.msp_debug_0.inst_full[255:0]
+@200
+-
+@22
+sancus_sim.dut.pc[15:0]
+sancus_sim.dut.execution_unit_0.register_file_0.r15[15:0]
+@28
+sancus_sim.dut.spm_violation
+@200
+-
+-
+@28
+sancus_sim.msp_debug_0.irq
+sancus_sim.msp_debug_0.irq_detect
+@22
+sancus_sim.msp_debug_0.irq_num[3:0]
+sancus_sim.dut.execution_unit_0.spm_control_0.spms_violation[0:3]
+@28
+sancus_sim.dut.execution_unit_0.spm_control_0.violation
+[pattern_trace] 1
+[pattern_trace] 0
