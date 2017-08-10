@@ -1,0 +1,9 @@
+[submodule "sancus-support"]
+	path = sancus-support
+	url = https://github.com/Michielvb/sancus-support
+[submodule "sancus-compiler"]
+	path = sancus-compiler
+	url = https://github.com/Michielvb/sancus-compiler
+[submodule "sancus-core"]
+	path = sancus-core
+	url = https://github.com/Michielvb/sancus-core
