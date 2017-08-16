@@ -1,6 +1,0 @@
-#!/bin/bash
-# gen-sm-key
-# SM_KEY is the output from gen-sm-key
-
-SM_KEY=19436e486b601a0b 
-sancus-crypto --key $SM_KEY --tag 'feca'
