@@ -5,47 +5,57 @@
 #include <sancus/reactive_stubs_support.h>
 #include "sm_io_wrap.h"
 
-#define _bis_SR_register(x) \
-    __asm__ __volatile__ ("bis.w %0, r2" \
-        : : "ri"((unsigned int) x) \
-    )
 
-DECLARE_MMIO_SM(IVT,0xffe0,0xfffe,0x1234);
+#define IVT_start (uint8_t*) 0xffe0
+#define IVT_end (uint8_t*) 0xfffe
+
+DECLARE_SM(IVT,0x1234);
+
+void SM_ENTRY(IVT) IVT_entry(void) {
+}
 
 void timerA_init(void)
 {
     printf("Initializing timerA\n");
     TACCTL0 = CCIE;
     TACTL = TASSEL_2 + MC_2; 
-    TACCR0 = 1000;
-    _bis_SR_register(GIE);
+    TACCR0 = 100;
     printf("Interrupts enabled \n");
+    asm("eint");
 }
 
 void __attribute__((__interrupt__ (TIMERA0_VECTOR))) Timer_A0(void)
 {
-    printf("TimerA interrupt received!");
+    printf("TimerA interrupt received!\n");
+    asm("dint");
+}
+
+void attacker_ISR(void) {
+    while(1);
 }
 
 int main()
 {
     WDTCTL = WDTPW + WDTHOLD;
+    uart_init();
     
     printf("main started\n");
+
+    IVT.public_start = IVT_start;
+    IVT.public_end = IVT_end;
     sancus_enable(&IVT);
+    dump_sm_layout(&IVT);
 
   
     timerA_init();
 
     
-#ifndef __SANCUS_SIM
-    uart_init();
-#endif
+
     
+    int* vector;
+    vector = (int*) IVT_start + TIMERA0_VECTOR;
+
+    asm("mov.b %0, &0xfff2": : "rm"(&attacker_ISR)); // The IVT is now write protected
     while(1);
 }
-
-// Findings: how the CPU retrieves its value from the IVT seems to bypass Sancus memory protection.
-// --> There are seperate memory address busses for the frontend and the execution unit.
-// --> Violations only register when eu_mb_en, a read in the IVT goes through fe_mb_en.
 
