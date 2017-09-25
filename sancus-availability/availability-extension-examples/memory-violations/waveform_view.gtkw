@@ -1,0 +1,34 @@
+[*]
+[*] GTKWave Analyzer v3.3.80 (w)1999-2017 BSI
+[*] Mon Sep 25 13:50:19 2017
+[*]
+[dumpfile] "/home/michiel/Documents/Sancus/Honoursprogram/sancus-availability/availability-extension-examples/memory-violations/sancus_sim.fst"
+[dumpfile_mtime] "Mon Sep 25 13:48:33 2017"
+[dumpfile_size] 7563138
+[savefile] "/home/michiel/Documents/Sancus/Honoursprogram/sancus-availability/availability-extension-examples/memory-violations/waveform_view.gtkw"
+[timestart] 3792402000
+[size] 1855 1006
+[pos] -1 -1
+*-18.000000 3792875000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] sancus_sim.
+[treeopen] sancus_sim.dut.
+[treeopen] sancus_sim.dut.execution_unit_0.
+[sst_width] 225
+[signals_width] 158
+[sst_expanded] 1
+[sst_vpaned_height] 298
+@28
+sancus_sim.dut.mclk
+@820
+sancus_sim.msp_debug_0.inst_full[255:0]
+@200
+-
+@22
+sancus_sim.dut.pc[15:0]
+sancus_sim.dut.execution_unit_0.register_file_0.r15[15:0]
+@28
+sancus_sim.dut.execution_unit_0.spm_control_0.violation
+sancus_sim.dut.execution_unit_0.spm_control_0.exec_violation
+sancus_sim.dut.frontend_0.gie
+[pattern_trace] 1
+[pattern_trace] 0

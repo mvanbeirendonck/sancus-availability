@@ -1,0 +1,12 @@
+There are two reasons why a read from the IVT should cause memory violations and two explanations why they do not.
+
+1) Upon an interrupt, the CPU retrieves the ISR by first loading the appropriate address of the IVT in the PC. This should cause an execute violation, because this address may not be an entry point.
+
+
+Is this a memory violation? This is a data region, not a text region. PC is not the MAB!
+
+
+
+
+2) The value at the PC address is then read and contains the address of the ISR. This should cause another memory violation as it reads from the private section.
+This does not generate a violation as the Frontend has its own Memory-address bus (enable) which is not under control (as opposed to the Execution Unit's one).
