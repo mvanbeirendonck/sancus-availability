@@ -36,8 +36,9 @@ void SM_MMIO_ENTRY(timerA_driver) write_timerA(uint16_t data, uint16_t address)
 void SM_FUNC(led_app) timerA_init(void)
 {
     write_timerA(CCIE,TACCTL0_);
-    write_timerA(TASSEL_2 + MC_2 + ID_3, TACTL_);
+    write_timerA(TASSEL_2 + MC_2 + ID_3, TACTL_); //TODO, MC_1?
     write_timerA(62500,TACCR0_);
+    asm("eint");
 }
 
 SM_DATA(led_app) int ledInit=0;
@@ -106,7 +107,7 @@ int main()
    
 
     printf("interrupts enabled\n");
-    asm("eint");
+
 
     while(1)
     {

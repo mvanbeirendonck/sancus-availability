@@ -1,15 +1,15 @@
 [*]
 [*] GTKWave Analyzer v3.3.80 (w)1999-2017 BSI
-[*] Mon Sep 25 12:12:33 2017
+[*] Mon Sep 25 10:45:00 2017
 [*]
-[dumpfile] "/home/michiel/Documents/Sancus/Honoursprogram/sancus-availability/application-demo/sancus_sim.fst"
-[dumpfile_mtime] "Mon Sep 25 12:11:48 2017"
-[dumpfile_size] 20560589
-[savefile] "/home/michiel/Documents/Sancus/Honoursprogram/sancus-availability/application-demo/waveform_view.gtkw"
+[dumpfile] "/home/michiel/Documents/Sancus/Honoursprogram/sancus-availability/availability-extension-examples/secure-SR-and-nested-interrupts/sancus_sim.fst"
+[dumpfile_mtime] "Mon Sep 25 10:44:20 2017"
+[dumpfile_size] 3647902
+[savefile] "/home/michiel/Documents/Sancus/Honoursprogram/sancus-availability/availability-extension-examples/secure-SR-and-nested-interrupts/waveform_view.gtkw"
 [timestart] 0
 [size] 1855 1006
 [pos] -1 -1
-*-31.000000 8360525000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-31.000000 1226647200 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] sancus_sim.
 [treeopen] sancus_sim.dut.
 [treeopen] sancus_sim.dut.execution_unit_0.
@@ -27,7 +27,7 @@ sancus_sim.msp_debug_0.inst_full[255:0]
 @22
 sancus_sim.dut.pc[15:0]
 sancus_sim.dut.execution_unit_0.register_file_0.r15[15:0]
-@29
+@28
 sancus_sim.dut.execution_unit_0.spm_control_0.violation
 @200
 -
@@ -37,7 +37,6 @@ sancus_sim.timerA_0.taccr0[15:0]
 sancus_sim.timerA_0.tar[15:0]
 @28
 sancus_sim.timerA_0.mclk
-sancus_sim.timerA_0.aclk_en
 sancus_sim.timerA_0.irq_ta0
 sancus_sim.timerA_0.irq_ta0_acc
 [pattern_trace] 1
