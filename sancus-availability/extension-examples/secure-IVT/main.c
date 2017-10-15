@@ -26,8 +26,7 @@ void timerA_init(void)
 
 void __attribute__((__interrupt__ (TIMERA0_VECTOR))) Timer_A0(void)
 {
-    printf("TimerA interrupt received!\n");
-    asm("dint");
+    printf("TimerA interrupt received!\n"); // Interrupts can still be retrieved
 }
 
 void attacker_ISR(void) {
@@ -49,11 +48,6 @@ int main()
   
     timerA_init();
 
-    
-
-    
-    int* vector;
-    vector = (int*) IVT_start + TIMERA0_VECTOR;
 
     asm("mov.b %0, &0xfff2": : "rm"(&attacker_ISR)); // The IVT is now write protected
     while(1);

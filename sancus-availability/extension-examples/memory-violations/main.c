@@ -16,7 +16,10 @@ unsigned int SM_DATA(foo) foo_var;
 
 void __attribute__((__interrupt__ (0x001A))) sm_irq(void)
 {
-    while(1);
+    while(1)
+	{
+	printf("Execute violation intercepted \n");
+	}
 }
 
 void SM_ENTRY(bar) bar_entry(void)
@@ -45,9 +48,7 @@ void SM_FUNC(foo) foo_private(void)
 int main()
 {
     WDTCTL = WDTPW + WDTHOLD;
-#ifndef __SANCUS_SIM
     uart_init();
-#endif
     
     printf("main started\n");
 
@@ -62,6 +63,7 @@ int main()
 
     unsigned int violation = 5;
 
+    
     printf("----------------------------\n");
     printf("Memory violations\n");
     printf("----------------------------\n");
@@ -120,14 +122,16 @@ int main()
     printf("Execute violations\n");
     printf("----------------------------\n");
 
+    // Issue each one seperate as they effectively end the main function by invoking an exception handler
+
     //printf("Outcall to private function \n");
     //asm("call %0": : "rm"(&foo_private));
 
-    //printf("Illegal branch to text section \n");
-    //asm("br %0": : "rm"(foo.public_start+0x2));
-
     printf("Outcall to exclusive driver \n");
     baz_entry();
+
+
+    
 
     
     

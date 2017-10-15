@@ -1,0 +1,1 @@
+Availability extensions make it difficult to evaluate overhead in software (e.g. TSC) because interrupts can only be enabled/disabled in protected modules. The overhead was therefore analyzed by examining the relevant signals in GTKWave.

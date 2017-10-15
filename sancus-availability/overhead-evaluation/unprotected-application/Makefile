@@ -10,7 +10,7 @@ CRYPTO             = sancus-crypto
 LOAD               = sancus-loader
 RM                 = rm -f
 
-CFLAGS             = -I$(SANCUS_SUPPORT_DIR)/include/ --verbose #-o0 -g
+CFLAGS             = -I$(SANCUS_SUPPORT_DIR)/include/ -Wall --verbose #-o0 -g
 ifdef __SANCUS_SIM
     CFLAGS += -D__SANCUS_SIM
 endif
@@ -18,13 +18,13 @@ endif
 MEM_SIZE_FLAGS      = --ram-size 16K --rom-size 41K
 SIM_FLAGS           = $(MEM_SIZE_FLAGS)
 
-LDFLAGS            = --standalone $(MEM_SIZE_FLAGS) --verbose
+LDFLAGS            = --standalone $(MEM_SIZE_FLAGS) --verbose --verbose --inline-arithmetic
 LIBS               = -L$(SANCUS_SUPPORT_DIR)/lib -ldev-uart
 CRYPTOFLAGS        = --key $(VENDOR_KEY) --debug --fill-macs
 LOADFLAGS          = -device $(DEVICE) -baudrate 115200
 
 NAME               = main
-OBJECTS            = main.o
+OBJECTS            = main.o sm_io_wrap.o
 TARGET             = $(NAME).elf
 TARGET_NO_MACS     = $(TARGET)-no-macs
 

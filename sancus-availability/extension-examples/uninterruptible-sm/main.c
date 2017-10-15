@@ -5,10 +5,6 @@
 #include <sancus/reactive_stubs_support.h>
 #include "sm_io_wrap.h"
 
-#define _bis_SR_register(x) \
-    __asm__ __volatile__ ("bis.w %0, r2" \
-        : : "ri"((unsigned int) x) \
-    )
 
 // This example program shows that SM's are currently uninterruptible (install extensions!!)
 
@@ -18,9 +14,9 @@ DECLARE_SM(foo,0x1234);
 void SM_ENTRY(foo) foo_print(void) {
 
     TACCTL0 = CCIE;
+    TACCR0 = 100;
     TACTL = TASSEL_2 + MC_2; 
-    TACCR0 = 1000;
-    _bis_SR_register(GIE);
+    asm("eint");
     //puts("going into infinite loop\n");
     while(1);
     
@@ -36,16 +32,11 @@ void __attribute__((__interrupt__ (TIMERA0_VECTOR))) Timer_A0(void)
 int main()
 {
     WDTCTL = WDTPW + WDTHOLD;
+    uart_init();
     
     printf("main started\n");
     
     sancus_enable(&foo);
-    dump_sm_layout(&foo);
-     
-#ifndef __SANCUS_SIM
-    uart_init();
-#endif
-    
     foo_print();
 }
 

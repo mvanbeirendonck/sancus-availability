@@ -2,9 +2,8 @@
 #include <msp430f1121.h>
 #include <stdio.h>
 #include <sancus_support/uart.h>
-#include <sancus/reactive_stubs_support.h>
 #include "sm_io_wrap.h"
-#include <sancus_support/tsc.h>
+
 
 // MMIO registers for led digit segments:
 // (MSB-1) g f e d c b a (LSB)
@@ -22,9 +21,6 @@ DECLARE_EXCLUSIVE_MMIO_SM(led_driver,0x0090,0x0098,2,0x1234); // End address is 
 DECLARE_EXCLUSIVE_MMIO_SM(timerA_driver,0x012E,0x0177,2,0x1234);
 DECLARE_MMIO_SM(IVT,0xFFE0,0xFFFF,0x1234);
 SM_HANDLE_IRQ(led_app,9);
-
-
-DECLARE_TSC_TIMER(overhead_timer);
 
 
 void SM_MMIO_ENTRY(led_driver) write_LED(uint8_t data, uint8_t led)
@@ -46,7 +42,8 @@ void SM_FUNC(led_app) timerA_init(void)
 {
     write_timerA(CCIE,TACCTL0_);
     write_timerA(TASSEL_2 + MC_1, TACTL_);
-    write_timerA(1,TACCR0_);
+    write_timerA(1000,TACCR0_);
+    asm("eint");
 }
 
 void SM_ENTRY(led_app) led_init(void)
@@ -95,14 +92,10 @@ int main()
     sancus_enable(&led_driver);
     sancus_enable(&timerA_driver);
 
-    led_init();
 
-    while(1) //in while because first call might be more overhead, before caller ID is stored
-	{
-	TSC_TIMER_START(overhead_timer);
-    	asm("eint");
-    	asm("dint");
-    	TSC_TIMER_END(overhead_timer); //result = interval - 2 = 2963 -6 = 2957
-	}
+    led_init();
+    while(1);
+
+
 }
 

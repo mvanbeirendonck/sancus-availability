@@ -1,0 +1,33 @@
+[*]
+[*] GTKWave Analyzer v3.3.80 (w)1999-2017 BSI
+[*] Sun Oct 15 23:26:31 2017
+[*]
+[dumpfile] "/home/michiel/Documents/Sancus/Honoursprogram/sancus-availability/extension-examples/uninterruptible-sm/sancus_sim.fst"
+[dumpfile_mtime] "Sun Oct 15 23:25:40 2017"
+[dumpfile_size] 3281194
+[savefile] "/home/michiel/Documents/Sancus/Honoursprogram/sancus-availability/extension-examples/uninterruptible-sm/waveform_view.gtkw"
+[timestart] 0
+[size] 1855 1006
+[pos] -1 -1
+*-29.000000 911075000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] sancus_sim.
+[treeopen] sancus_sim.dut.
+[treeopen] sancus_sim.dut.execution_unit_0.
+[sst_width] 225
+[signals_width] 158
+[sst_expanded] 1
+[sst_vpaned_height] 298
+@28
+sancus_sim.dut.mclk
+@820
+sancus_sim.msp_debug_0.inst_full[255:0]
+@200
+-
+@22
+sancus_sim.dut.pc[15:0]
+sancus_sim.dut.execution_unit_0.register_file_0.r15[15:0]
+@28
+sancus_sim.dut.spm_violation
+sancus_sim.timerA_0.irq_ta0
+[pattern_trace] 1
+[pattern_trace] 0

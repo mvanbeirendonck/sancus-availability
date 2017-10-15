@@ -18,7 +18,7 @@ endif
 MEM_SIZE_FLAGS      = --ram-size 16K --rom-size 41K
 SIM_FLAGS           = $(MEM_SIZE_FLAGS)
 
-LDFLAGS            = --standalone $(MEM_SIZE_FLAGS) --verbose --verbose
+LDFLAGS            = --standalone $(MEM_SIZE_FLAGS) --verbose --verbose --inline-arithmetic
 LIBS               = -L$(SANCUS_SUPPORT_DIR)/lib -ldev-uart
 CRYPTOFLAGS        = --key $(VENDOR_KEY) --debug --fill-macs
 LOADFLAGS          = -device $(DEVICE) -baudrate 115200
@@ -47,7 +47,6 @@ load: $(TARGET)
 sim:
 	$(MAKE) CFLAGS="$(CFLAGS) -D__SANCUS_SIM" --always-make
 	sancus-sim $(SIM_FLAGS) $(TARGET)
-
 
 .PHONY: clean
 clean:
